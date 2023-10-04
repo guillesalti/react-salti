@@ -1,16 +1,32 @@
+//MUESTRA TODOS LOS ARTICULOS
+import { useState, useEffect } from "react";
+import { getArticulos, getElementByCategoria } from "../../asyncMock";
+import ItemList from "../ItemList/ItemList";
+import './ItemListContainer.css'
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = ({saludo}) =>{
+    const [articulos, setArticulos] = useState([])
+    
+    const {categoriaId}=useParams ()
+
+    useEffect (()=>{
+        const asyncFunc = categoriaId ? getElementByCategoria : getArticulos
+
+        asyncFunc(categoriaId)
+        .then(response =>{
+            setArticulos(response)
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    },[categoriaId])
+    
     return (
-        <article className="message is-success column is-half is-offset-one-quarter"> 
-        <div className="message-header ">
-            <p>Hola!!</p>
-            <button className="delete" aria-label="delete"></button>
-        </div>
-        <div className="message-body">
+         <div className="Saludo">
             <h1>{saludo}</h1>
-        </div>    
-        </article>
-        
+            <ItemList articulos={articulos}/>
+         </div>       
     )
 }
 export default ItemListContainer;

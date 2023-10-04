@@ -1,0 +1,30 @@
+*::after
+*::before
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.contador{
+   width: 100%; 
+}
+.contador button{
+    border: none;
+    border-radius: 8%;
+    background-color: rgb(65, 255, 106);
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 5px;
+    padding: 10px;
+    
+}
+.AñadirCarrito{
+  width: 300px;
+}
+
+.botonCantidad{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
