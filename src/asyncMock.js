@@ -19,7 +19,7 @@ export const getArticulos = () => {
 export const getElementById = (articulosId) => {
     return new Promise ((resuelve) => {
         setTimeout(() =>{
-            resuelve (articulos.find(articulo => articulo.id === articulosId))
+            resuelve(articulos.find(articulo => articulo.id === articulosId))
         }, 500)
     })
 }

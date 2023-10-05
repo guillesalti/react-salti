@@ -8,9 +8,8 @@ const ItemDetailContainer = () => {
     const [articulos, setArticulos] = useState (null)
 
     const {itemId} = useParams()
-
     useEffect (() => {
-            getElementById(itemId)
+        getElementById(itemId)
         .then(response => {
             setArticulos(response)
         })
@@ -18,7 +17,6 @@ const ItemDetailContainer = () => {
             console.error(error)
         })
     },[itemId])
-
     return (
         <div className="ItemDetailContainer">
             <ItemDetail {...articulos}/>
