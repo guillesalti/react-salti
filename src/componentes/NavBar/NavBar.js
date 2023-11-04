@@ -2,11 +2,12 @@
 import CartWidget from "../CardWidget/CartWidget";
 import Logo from './logo.png';
 import { NavLink, Link } from "react-router-dom";
+import './NavBar.css'
 
 const NavBar = () =>{
     return (
-        <nav className="has-navbar-fixed-top" role="navigation" aria-label="main navigation">
-            <div className="navbar-brand ">
+        <nav className="has-navbar-fixed-top " role="navigation" aria-label="main navigation">
+            <div className="navbar-brand navbar is-fixed-top">
             <figure className="navbar-item image is-128x128">
                 <Link to='/'>
                     <img src={Logo} alt="logo"/>
@@ -21,8 +22,7 @@ const NavBar = () =>{
             </div>
             <CartWidget/>
             </div>
-                        
         </nav>                                 
-    )
-}
+    )}
+
 export default NavBar;

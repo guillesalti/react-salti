@@ -1,6 +1,7 @@
 //CONTADOR DE DETALLE DE ARTICULO
 import { useState } from "react";
 import './ItemCount.css'
+import { Link } from "react-router-dom";
 
 const ItemCount = ({stock, inicio, añadido}) =>{
     const [cantidad, setCantidad] = useState(inicio)
@@ -11,11 +12,13 @@ const ItemCount = ({stock, inicio, añadido}) =>{
     return (
         <div className="contador">
             <div className="botonCantidad">
-                <button onClick={resta}>-</button>
-                <h4>{cantidad}</h4>
                 <button onClick={suma}>+</button>
+                <h4>{cantidad}</h4>
+                <button onClick={resta}>-</button>                
+                
+                <button onClick={()=> añadido(cantidad)} disabled={!stock}>Añadir al carrito</button>            
             </div>
-            <button className="AñadirCarrito" onClick={()=>añadido(cantidad)} disabled={!stock}>Añadir al carrito</button>            
+            <Link to={'/'}><button className="AñadirCarrito"> Volver</button></Link>            
         </div>
     )
 }

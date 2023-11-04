@@ -1,5 +1,5 @@
 import Item from "../Item/Item";
-
+import './ItemList.css'
 const ItemList = ({articulos}) =>{
     return (
         <div className="ListGroup">

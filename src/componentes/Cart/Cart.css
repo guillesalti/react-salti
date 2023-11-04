@@ -1,0 +1,59 @@
+.cartCarrito{
+    margin-top: 150px;   
+    position: center;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    padding: 5px;
+
+}
+.footerCarritoCart {   
+    display: flex; 
+    justify-content: end;
+    margin-right: 35px;
+    
+}
+.footerCarritoCart button{
+    border: none;
+    border-radius: 8%;
+    cursor: pointer;
+    margin-left: 20px;
+    padding: 10px;
+    font-weight: bold;
+}
+.finalizarCompra {
+    background-color: rgb(0, 182, 0);
+    color: white;
+}
+.seguirComprando {
+    background-color: rgba(145, 3, 254, 0.604);
+    color: white;
+}
+
+.vaciarCarrito {
+    border: none;
+}
+.totalCarrito {
+    margin: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: end;
+}
+
+.upsCarro {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 10px;
+}
+
+.productosButton  {
+    background-color: rgba(145, 3, 254, 0.604);
+    color: white;
+    border: none;
+    border-radius: 8%;
+    cursor: pointer;
+    margin-left: 20px;
+    padding: 5px;    
+    font-weight: bold;
+    width: 30%;
+}

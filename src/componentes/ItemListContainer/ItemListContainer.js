@@ -1,27 +1,44 @@
 //MUESTRA TODOS LOS ARTICULOS
 import { useState, useEffect } from "react";
-import { getArticulos, getElementByCategoria } from "../../asyncMock";
+
 import ItemList from "../ItemList/ItemList";
 import './ItemListContainer.css'
-import { useParams } from "react-router-dom";
+import { Form, useParams } from "react-router-dom";
+
+import {getDocs, collection, query, where} from "firebase/firestore";
+import {db} from "../../services/firebase/FirebaseConfig"; 
 
 const ItemListContainer = ({saludo}) =>{
     const [articulos, setArticulos] = useState([])
-    
+    const [loading, setloading] = useState(true)
+
     const {categoriaId}=useParams ()
 
     useEffect (()=>{
-        const asyncFunc = categoriaId ? getElementByCategoria : getArticulos
+        setloading(true)
+        
+        const collectionRef = categoriaId
+        ? query(collection(db,"productos"), where("categoria", "==", categoriaId))
+        : collection (db, "productos")
 
-        asyncFunc(categoriaId)
+        getDocs(collectionRef)
+        
         .then(response =>{
-            setArticulos(response)
-        })
-        .catch(error => {
-            console.error(error)
-        })
-    },[categoriaId])
-    
+            const productsAdapted = response.docs.map(doc=>{
+                const data =doc.data()
+                return {id: doc.id, ...data}
+            })
+            setArticulos(productsAdapted)
+            })
+            .finally(()=>{
+                setloading(false)
+            })
+        },[categoriaId])
+
+    if (loading){
+        return(
+            <progress class="progress is-dark" max="50">60%</progress>        
+        )}
     return (
          <div className="Saludo">
             <h1>{saludo}</h1>
@@ -29,4 +46,6 @@ const ItemListContainer = ({saludo}) =>{
          </div>       
     )
 }
+
+ 
 export default ItemListContainer;

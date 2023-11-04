@@ -1,29 +1,47 @@
 //CARD DETALLE ARTICULO
+import { useContext, useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.css"
+import { Link } from "react-router-dom";
+import {CartContext} from "../../context/CartContext";
 
 const ItemDetail = ({id, nombre, img, categoria, descripcion, precio, stock}) => {
+    const [cantidadAñadida, setCantidadAñadida] = useState(0);
+
+   const {añadirItem} = useContext(CartContext)
+
+    const productoAñadido = (cantidad)=> {
+        setCantidadAñadida (cantidad)
+
+        const item = {id, nombre, precio} //arma el objeto con los datos 
+
+        añadirItem (item, cantidad) //pasa los datos y la cantidad seleccionada
+    }
     
     return(
         <div className="CardArticuloDetail">
-            <header className="HeaderArticulo">
-                <h2 className="NombreArticulo">{nombre}</h2>
-            </header>
-            <picture>
-                <img src={img} alt={nombre} className="ImgArticulo"/>
+            <picture className="ImgArticuloDiv">
+             <img src={img} alt={nombre} className="ImgArticulo"/>
             </picture>
+            
             <div className="InfoArticuloDetail">
-                <p>Precio: $ {precio}</p>
-                <p>Categoría: {categoria}</p>
-                <p>Descripción {descripcion}</p>
-                <p>Numero de artículo: {id}</p>
+                <h2 className="NombreArticulo">{nombre}</h2>
+                <p>Precio: $ {precio}</p>                
+                <p>Descripción: {descripcion}</p>
+                <p>Numero de artículo: {id}</p>              
+                {cantidadAñadida > 0 ? 
+                    (<div>
+                        <p>Cantidad: {cantidadAñadida}</p>
+                        <button>                   
+                            <Link to='/cart' className='realizarCompra'>Terminar Compra</Link>
+                        </button>
+                        <button className="voler">                   
+                            <Link to='/' className="voler">Volver</Link>
+                        </button>
+                    </div>)
+                    :(<ItemCount inicio={1} stock={stock} añadido={productoAñadido}/>)
+                }
             </div>
-            <footer className="FooterArticuloDetail">
-                <ItemCount inicio={1} stock={stock} añadido={(cantidad) => console.log('cantidad agregada', cantidad)}/>
-            </footer>
         </div>
-    )
-
-}
-
+    )}
 export default ItemDetail;

@@ -1,3 +1,17 @@
+Mi nombre es Guillermina Salti, soy profesora de educación física. Estoy incursionando en el mundo del desarrollo para salirme de mi zona de confort... 
+Lo que nunca me imaginé era que me iba a terminar gustando tanto.
+
+Espero estar a la altura de su entrega en las clases, le dejo dos breves aclaraciones: 
+
+Para este proyecto es necesario instalar:
+* Bulma io (npm install bulma)
+* firestore. (npm install firebase)
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

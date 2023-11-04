@@ -1,0 +1,13 @@
+.ItemDetailContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.div {
+
+    margin-top: 150px;
+}
+.progress{
+    margin-top: 150px;
+}
